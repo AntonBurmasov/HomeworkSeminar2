@@ -12,7 +12,6 @@ int number = Convert.ToInt32(Console.ReadLine());
 if(number > 7 || number < 1)
 {
     Console.WriteLine("В неделе только 7 дней!");
-    return;
 }
 
 if(number >= 1 & number <= 5)
