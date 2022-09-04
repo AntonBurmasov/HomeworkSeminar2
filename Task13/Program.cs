@@ -10,12 +10,44 @@ Console.WriteLine("Введите число:");
 
 int number = Convert.ToInt32(Console.ReadLine());
 
+int copynumber = number;   //Переменная нужна внутри цикла подсчета количества знаков в заданном числе
+
 if(number < 100 & number > -100)
 {
     Console.WriteLine("Третьей цифры нет.");
     return;
 }
+int count = 1; // Переменная считает количество знаков в числе.
+
+while(copynumber / 10 != 0)
+{
+  count = count + 1;
+  copynumber = copynumber / 10;
+  // цикл подсчета знаков в числе, как для положительных, так и для отрицательных чисел.
+}
+
+// Console.WriteLine(count);
+
+int meter = 0; // Счетчик цикла.
+int lastnumbers= 1; // Переменная определяет количество знаков после искомой цифры(их количество равно количеству нулей в переменной после выполнения цикла) и позволит их убрать из дальнейших вычислений.
+while(meter < (count -3))
+ {
+    lastnumbers = lastnumbers * 10;
+    meter = meter +1;
+ 
+ }
 
 
-int count = number.Length;
+int first3numbers = number / lastnumbers;   // Переменная показывает первые 3 цифры числа.
+
+int thirdnumber = first3numbers % 10;  // Вуаля - остаток от деления на 10 первых трех цифр- наше искомое число.  Думаю можно было сделать проще и быстрее, но все равно горжусь этим кодом, пожалуйста строго не судите) 
+
+if(thirdnumber < 0)
+{
+    thirdnumber = thirdnumber * -1;   // Избавляемся от минуса в отображении в случае отрицательного числа.
+}
+
+
+  
+Console.WriteLine($"Третья цифра числа: {thirdnumber}");
 
